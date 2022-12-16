@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HospitalServiceDBModelStoreContainer" CdmEntityContainer="HospitalServiceDBEntities">
+    <EntitySetMapping Name="Analisis">
+      <EntityTypeMapping TypeName="HospitalServiceDBModel.Analisis">
+        <MappingFragment StoreEntitySet="Analisis">
+          <ScalarProperty Name="IdAnalisis" ColumnName="IdAnalisis" />
+          <ScalarProperty Name="NumHistMedico" ColumnName="NumHistMedico" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="Monto" ColumnName="Monto" />
+          <ScalarProperty Name="IdTipoAnalisis" ColumnName="IdTipoAnalisis" />
+          <ScalarProperty Name="Pago" ColumnName="Pago" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cuenta">
+      <EntityTypeMapping TypeName="HospitalServiceDBModel.Cuenta">
+        <MappingFragment StoreEntitySet="Cuenta">
+          <ScalarProperty Name="IdCuenta" ColumnName="IdCuenta" />
+          <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />
+          <ScalarProperty Name="NumHistMedico" ColumnName="NumHistMedico" />
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Paciente">
+      <EntityTypeMapping TypeName="HospitalServiceDBModel.Paciente">
+        <MappingFragment StoreEntitySet="Paciente">
+          <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />
+          <ScalarProperty Name="NumHistMedico" ColumnName="NumHistMedico" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pago">
+      <EntityTypeMapping TypeName="HospitalServiceDBModel.Pago">
+        <MappingFragment StoreEntitySet="Pago">
+          <ScalarProperty Name="IdPago" ColumnName="IdPago" />
+          <ScalarProperty Name="NumHistMedico" ColumnName="NumHistMedico" />
+          <ScalarProperty Name="Monto" ColumnName="Monto" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="IsWeb" ColumnName="IsWeb" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Procedimiento">
+      <EntityTypeMapping TypeName="HospitalServiceDBModel.Procedimiento">
+        <MappingFragment StoreEntitySet="Procedimiento">
+          <ScalarProperty Name="IdProcedimiento" ColumnName="IdProcedimiento" />
+          <ScalarProperty Name="NumHistMedico" ColumnName="NumHistMedico" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="Monto" ColumnName="Monto" />
+          <ScalarProperty Name="TipoProcedimiento" ColumnName="TipoProcedimiento" />
+          <ScalarProperty Name="Pago" ColumnName="Pago" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="HospitalServiceDBModel.Roles">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NombreRol" ColumnName="NombreRol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoAnalisis">
+      <EntityTypeMapping TypeName="HospitalServiceDBModel.TipoAnalisis">
+        <MappingFragment StoreEntitySet="TipoAnalisis">
+          <ScalarProperty Name="IdTipoAnalisis" ColumnName="IdTipoAnalisis" />
+          <ScalarProperty Name="TipoAnalisis1" ColumnName="TipoAnalisis" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoProcedimiento">
+      <EntityTypeMapping TypeName="HospitalServiceDBModel.TipoProcedimiento">
+        <MappingFragment StoreEntitySet="TipoProcedimiento">
+          <ScalarProperty Name="IdTipoProcedimiento" ColumnName="IdTipoProcedimiento" />
+          <ScalarProperty Name="TipoProcedimiento1" ColumnName="TipoProcedimiento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="HospitalServiceDBModel.Usuarios">
+        <MappingFragment StoreEntitySet="Usuarios">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="IDRol" ColumnName="IDRol" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Comp" FunctionName="HospitalServiceDBModel.Store.Comp" />
+    <FunctionImportMapping FunctionImportName="GetReg" FunctionName="HospitalServiceDBModel.Store.GetReg" />
+    <FunctionImportMapping FunctionImportName="InsertUser" FunctionName="HospitalServiceDBModel.Store.InsertUser">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HospitalServiceDBModel.InsertUser_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="IDRol" ColumnName="IDRol" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

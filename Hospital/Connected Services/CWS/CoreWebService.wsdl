@@ -1,0 +1,1627 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAnalisis">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAnalisisResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAnalisisResult" type="tns:ArrayOfAnalisis" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAnalisis">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Analisis" nillable="true" type="tns:Analisis" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Analisis">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdAnalisis" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumHistMedico" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaRegistro" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Monto" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdTipoAnalisis" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Pago" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TipoAnalisis" type="tns:TipoAnalisis" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TipoAnalisis">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdTipoAnalisis" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="TipoAnalisis1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Analisis" type="tns:ArrayOfAnalisis" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getAnalisis">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAnalisisResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAnalisisResult" type="tns:Analisis" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistrarAnalisis">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="analisis" type="tns:Analisis" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistrarAnalisisResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RegistrarAnalisisResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateAnalisis">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="analisis" type="tns:Analisis" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateAnalisisResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateAnalisisResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAnalisis">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="analisis" type="tns:Analisis" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAnalisisResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteAnalisisResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCuentas">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCuentasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCuentasResult" type="tns:ArrayOfCuenta" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCuenta">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Cuenta" nillable="true" type="tns:Cuenta" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Cuenta">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdCuenta" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdPaciente" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumHistMedico" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Balance" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaRegistro" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Paciente" type="tns:Paciente" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Paciente">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdPaciente" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumHistMedico" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdUsuario" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cuenta" type="tns:ArrayOfCuenta" />
+          <s:element minOccurs="0" maxOccurs="1" name="Usuarios" type="tns:Usuarios" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Usuarios">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cedula" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombres" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Apellidos" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sexo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telefono" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Correo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Direccion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IDRol" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Estado" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Paciente" type="tns:ArrayOfPaciente" />
+          <s:element minOccurs="0" maxOccurs="1" name="Roles" type="tns:Roles" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPaciente">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Paciente" nillable="true" type="tns:Paciente" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Roles">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="NombreRol" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Usuarios" type="tns:ArrayOfUsuarios" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfUsuarios">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Usuarios" nillable="true" type="tns:Usuarios" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getCuenta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCuentaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCuentaResult" type="tns:Cuenta" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistrarCuenta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cuenta" type="tns:Cuenta" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistrarCuentaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RegistrarCuentaResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateCuenta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cuenta" type="tns:Cuenta" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateCuentaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateCuentaResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteCuenta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cuenta" type="tns:Cuenta" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteCuentaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteCuentaResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPacientes">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetPacientesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPacientesResult" type="tns:ArrayOfPaciente" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPaciente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPacienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getPacienteResult" type="tns:Paciente" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistrarPaciente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="paciente" type="tns:Paciente" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistrarPacienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RegistrarPacienteResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdatePaciente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="paciente" type="tns:Paciente" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdatePacienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdatePacienteResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeletePaciente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="paciente" type="tns:Paciente" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeletePacienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeletePacienteResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPagos">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetPagosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPagosResult" type="tns:ArrayOfPago" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPago">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Pago" nillable="true" type="tns:Pago" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Pago">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdPago" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumHistMedico" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Monto" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaRegistro" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="IsWeb" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getPago">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPagoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getPagoResult" type="tns:Pago" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistrarPago">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pago" type="tns:Pago" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistrarPagoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RegistrarPagoResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdatePago">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pago" type="tns:Pago" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdatePagoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdatePagoResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeletePago">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pago" type="tns:Pago" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeletePagoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeletePagoResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProcedimientos">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetProcedimientosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProcedimientosResult" type="tns:ArrayOfProcedimiento" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfProcedimiento">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Procedimiento" nillable="true" type="tns:Procedimiento" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Procedimiento">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdProcedimiento" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumHistMedico" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaRegistro" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Monto" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="TipoProcedimiento" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Pago" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TipoProcedimiento1" type="tns:TipoProcedimiento" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TipoProcedimiento">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdTipoProcedimiento" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="TipoProcedimiento1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Procedimiento" type="tns:ArrayOfProcedimiento" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getProcedimiento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getProcedimientoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getProcedimientoResult" type="tns:Procedimiento" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistrarProcedimiento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="procedimiento" type="tns:Procedimiento" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistrarProcedimientoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RegistrarProcedimientoResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateProcedimiento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="procedimiento" type="tns:Procedimiento" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateProcedimientoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateProcedimientoResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteProcedimiento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="procedimiento" type="tns:Procedimiento" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteProcedimientoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteProcedimientoResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUsuarios">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetUsuariosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUsuariosResult" type="tns:ArrayOfUsuarios" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUsuarios">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUsuariosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getUsuariosResult" type="tns:Usuarios" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistrarUsuarios">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuarios" type="tns:Usuarios" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistrarUsuariosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RegistrarUsuariosResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateUsuarios">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuarios" type="tns:Usuarios" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateUsuariosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateUsuariosResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteUsuarios">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuarios" type="tns:Usuarios" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteUsuariosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteUsuariosResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRoles">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetRolesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRolesResult" type="tns:ArrayOfRoles" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfRoles">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Roles" nillable="true" type="tns:Roles" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getRoles">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getRolesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getRolesResult" type="tns:Roles" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistrarRoles">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="roles" type="tns:Roles" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistrarRolesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RegistrarRolesResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateRoles">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="roles" type="tns:Roles" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateRolesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateRolesResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteRoles">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="roles" type="tns:Roles" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteRolesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteRolesResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAnalisisSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAnalisis" />
+  </wsdl:message>
+  <wsdl:message name="GetAnalisisSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAnalisisResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAnalisisSoapIn">
+    <wsdl:part name="parameters" element="tns:getAnalisis" />
+  </wsdl:message>
+  <wsdl:message name="getAnalisisSoapOut">
+    <wsdl:part name="parameters" element="tns:getAnalisisResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegistrarAnalisisSoapIn">
+    <wsdl:part name="parameters" element="tns:RegistrarAnalisis" />
+  </wsdl:message>
+  <wsdl:message name="RegistrarAnalisisSoapOut">
+    <wsdl:part name="parameters" element="tns:RegistrarAnalisisResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateAnalisisSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateAnalisis" />
+  </wsdl:message>
+  <wsdl:message name="UpdateAnalisisSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateAnalisisResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAnalisisSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteAnalisis" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAnalisisSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteAnalisisResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCuentasSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCuentas" />
+  </wsdl:message>
+  <wsdl:message name="GetCuentasSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCuentasResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCuentaSoapIn">
+    <wsdl:part name="parameters" element="tns:getCuenta" />
+  </wsdl:message>
+  <wsdl:message name="getCuentaSoapOut">
+    <wsdl:part name="parameters" element="tns:getCuentaResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegistrarCuentaSoapIn">
+    <wsdl:part name="parameters" element="tns:RegistrarCuenta" />
+  </wsdl:message>
+  <wsdl:message name="RegistrarCuentaSoapOut">
+    <wsdl:part name="parameters" element="tns:RegistrarCuentaResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCuentaSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateCuenta" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCuentaSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateCuentaResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCuentaSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteCuenta" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCuentaSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteCuentaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPacientesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPacientes" />
+  </wsdl:message>
+  <wsdl:message name="GetPacientesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPacientesResponse" />
+  </wsdl:message>
+  <wsdl:message name="getPacienteSoapIn">
+    <wsdl:part name="parameters" element="tns:getPaciente" />
+  </wsdl:message>
+  <wsdl:message name="getPacienteSoapOut">
+    <wsdl:part name="parameters" element="tns:getPacienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegistrarPacienteSoapIn">
+    <wsdl:part name="parameters" element="tns:RegistrarPaciente" />
+  </wsdl:message>
+  <wsdl:message name="RegistrarPacienteSoapOut">
+    <wsdl:part name="parameters" element="tns:RegistrarPacienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePacienteSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdatePaciente" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePacienteSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdatePacienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeletePacienteSoapIn">
+    <wsdl:part name="parameters" element="tns:DeletePaciente" />
+  </wsdl:message>
+  <wsdl:message name="DeletePacienteSoapOut">
+    <wsdl:part name="parameters" element="tns:DeletePacienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPagosSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPagos" />
+  </wsdl:message>
+  <wsdl:message name="GetPagosSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPagosResponse" />
+  </wsdl:message>
+  <wsdl:message name="getPagoSoapIn">
+    <wsdl:part name="parameters" element="tns:getPago" />
+  </wsdl:message>
+  <wsdl:message name="getPagoSoapOut">
+    <wsdl:part name="parameters" element="tns:getPagoResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegistrarPagoSoapIn">
+    <wsdl:part name="parameters" element="tns:RegistrarPago" />
+  </wsdl:message>
+  <wsdl:message name="RegistrarPagoSoapOut">
+    <wsdl:part name="parameters" element="tns:RegistrarPagoResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePagoSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdatePago" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePagoSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdatePagoResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeletePagoSoapIn">
+    <wsdl:part name="parameters" element="tns:DeletePago" />
+  </wsdl:message>
+  <wsdl:message name="DeletePagoSoapOut">
+    <wsdl:part name="parameters" element="tns:DeletePagoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProcedimientosSoapIn">
+    <wsdl:part name="parameters" element="tns:GetProcedimientos" />
+  </wsdl:message>
+  <wsdl:message name="GetProcedimientosSoapOut">
+    <wsdl:part name="parameters" element="tns:GetProcedimientosResponse" />
+  </wsdl:message>
+  <wsdl:message name="getProcedimientoSoapIn">
+    <wsdl:part name="parameters" element="tns:getProcedimiento" />
+  </wsdl:message>
+  <wsdl:message name="getProcedimientoSoapOut">
+    <wsdl:part name="parameters" element="tns:getProcedimientoResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegistrarProcedimientoSoapIn">
+    <wsdl:part name="parameters" element="tns:RegistrarProcedimiento" />
+  </wsdl:message>
+  <wsdl:message name="RegistrarProcedimientoSoapOut">
+    <wsdl:part name="parameters" element="tns:RegistrarProcedimientoResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateProcedimientoSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateProcedimiento" />
+  </wsdl:message>
+  <wsdl:message name="UpdateProcedimientoSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateProcedimientoResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteProcedimientoSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteProcedimiento" />
+  </wsdl:message>
+  <wsdl:message name="DeleteProcedimientoSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteProcedimientoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUsuariosSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUsuarios" />
+  </wsdl:message>
+  <wsdl:message name="GetUsuariosSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUsuariosResponse" />
+  </wsdl:message>
+  <wsdl:message name="getUsuariosSoapIn">
+    <wsdl:part name="parameters" element="tns:getUsuarios" />
+  </wsdl:message>
+  <wsdl:message name="getUsuariosSoapOut">
+    <wsdl:part name="parameters" element="tns:getUsuariosResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegistrarUsuariosSoapIn">
+    <wsdl:part name="parameters" element="tns:RegistrarUsuarios" />
+  </wsdl:message>
+  <wsdl:message name="RegistrarUsuariosSoapOut">
+    <wsdl:part name="parameters" element="tns:RegistrarUsuariosResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUsuariosSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateUsuarios" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUsuariosSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateUsuariosResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteUsuariosSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteUsuarios" />
+  </wsdl:message>
+  <wsdl:message name="DeleteUsuariosSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteUsuariosResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRolesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRoles" />
+  </wsdl:message>
+  <wsdl:message name="GetRolesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRolesResponse" />
+  </wsdl:message>
+  <wsdl:message name="getRolesSoapIn">
+    <wsdl:part name="parameters" element="tns:getRoles" />
+  </wsdl:message>
+  <wsdl:message name="getRolesSoapOut">
+    <wsdl:part name="parameters" element="tns:getRolesResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegistrarRolesSoapIn">
+    <wsdl:part name="parameters" element="tns:RegistrarRoles" />
+  </wsdl:message>
+  <wsdl:message name="RegistrarRolesSoapOut">
+    <wsdl:part name="parameters" element="tns:RegistrarRolesResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateRolesSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateRoles" />
+  </wsdl:message>
+  <wsdl:message name="UpdateRolesSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateRolesResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteRolesSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteRoles" />
+  </wsdl:message>
+  <wsdl:message name="DeleteRolesSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteRolesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="CoreWebServiceSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAnalisis">
+      <wsdl:input message="tns:GetAnalisisSoapIn" />
+      <wsdl:output message="tns:GetAnalisisSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAnalisis">
+      <wsdl:input message="tns:getAnalisisSoapIn" />
+      <wsdl:output message="tns:getAnalisisSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarAnalisis">
+      <wsdl:input message="tns:RegistrarAnalisisSoapIn" />
+      <wsdl:output message="tns:RegistrarAnalisisSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAnalisis">
+      <wsdl:input message="tns:UpdateAnalisisSoapIn" />
+      <wsdl:output message="tns:UpdateAnalisisSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAnalisis">
+      <wsdl:input message="tns:DeleteAnalisisSoapIn" />
+      <wsdl:output message="tns:DeleteAnalisisSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCuentas">
+      <wsdl:input message="tns:GetCuentasSoapIn" />
+      <wsdl:output message="tns:GetCuentasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCuenta">
+      <wsdl:input message="tns:getCuentaSoapIn" />
+      <wsdl:output message="tns:getCuentaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarCuenta">
+      <wsdl:input message="tns:RegistrarCuentaSoapIn" />
+      <wsdl:output message="tns:RegistrarCuentaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCuenta">
+      <wsdl:input message="tns:UpdateCuentaSoapIn" />
+      <wsdl:output message="tns:UpdateCuentaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCuenta">
+      <wsdl:input message="tns:DeleteCuentaSoapIn" />
+      <wsdl:output message="tns:DeleteCuentaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPacientes">
+      <wsdl:input message="tns:GetPacientesSoapIn" />
+      <wsdl:output message="tns:GetPacientesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getPaciente">
+      <wsdl:input message="tns:getPacienteSoapIn" />
+      <wsdl:output message="tns:getPacienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarPaciente">
+      <wsdl:input message="tns:RegistrarPacienteSoapIn" />
+      <wsdl:output message="tns:RegistrarPacienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePaciente">
+      <wsdl:input message="tns:UpdatePacienteSoapIn" />
+      <wsdl:output message="tns:UpdatePacienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletePaciente">
+      <wsdl:input message="tns:DeletePacienteSoapIn" />
+      <wsdl:output message="tns:DeletePacienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPagos">
+      <wsdl:input message="tns:GetPagosSoapIn" />
+      <wsdl:output message="tns:GetPagosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getPago">
+      <wsdl:input message="tns:getPagoSoapIn" />
+      <wsdl:output message="tns:getPagoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarPago">
+      <wsdl:input message="tns:RegistrarPagoSoapIn" />
+      <wsdl:output message="tns:RegistrarPagoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePago">
+      <wsdl:input message="tns:UpdatePagoSoapIn" />
+      <wsdl:output message="tns:UpdatePagoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletePago">
+      <wsdl:input message="tns:DeletePagoSoapIn" />
+      <wsdl:output message="tns:DeletePagoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProcedimientos">
+      <wsdl:input message="tns:GetProcedimientosSoapIn" />
+      <wsdl:output message="tns:GetProcedimientosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getProcedimiento">
+      <wsdl:input message="tns:getProcedimientoSoapIn" />
+      <wsdl:output message="tns:getProcedimientoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarProcedimiento">
+      <wsdl:input message="tns:RegistrarProcedimientoSoapIn" />
+      <wsdl:output message="tns:RegistrarProcedimientoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProcedimiento">
+      <wsdl:input message="tns:UpdateProcedimientoSoapIn" />
+      <wsdl:output message="tns:UpdateProcedimientoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProcedimiento">
+      <wsdl:input message="tns:DeleteProcedimientoSoapIn" />
+      <wsdl:output message="tns:DeleteProcedimientoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsuarios">
+      <wsdl:input message="tns:GetUsuariosSoapIn" />
+      <wsdl:output message="tns:GetUsuariosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUsuarios">
+      <wsdl:input message="tns:getUsuariosSoapIn" />
+      <wsdl:output message="tns:getUsuariosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarUsuarios">
+      <wsdl:input message="tns:RegistrarUsuariosSoapIn" />
+      <wsdl:output message="tns:RegistrarUsuariosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUsuarios">
+      <wsdl:input message="tns:UpdateUsuariosSoapIn" />
+      <wsdl:output message="tns:UpdateUsuariosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUsuarios">
+      <wsdl:input message="tns:DeleteUsuariosSoapIn" />
+      <wsdl:output message="tns:DeleteUsuariosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRoles">
+      <wsdl:input message="tns:GetRolesSoapIn" />
+      <wsdl:output message="tns:GetRolesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getRoles">
+      <wsdl:input message="tns:getRolesSoapIn" />
+      <wsdl:output message="tns:getRolesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarRoles">
+      <wsdl:input message="tns:RegistrarRolesSoapIn" />
+      <wsdl:output message="tns:RegistrarRolesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRoles">
+      <wsdl:input message="tns:UpdateRolesSoapIn" />
+      <wsdl:output message="tns:UpdateRolesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRoles">
+      <wsdl:input message="tns:DeleteRolesSoapIn" />
+      <wsdl:output message="tns:DeleteRolesSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CoreWebServiceSoap" type="tns:CoreWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnalisis">
+      <soap:operation soapAction="http://tempuri.org/GetAnalisis" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAnalisis">
+      <soap:operation soapAction="http://tempuri.org/getAnalisis" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarAnalisis">
+      <soap:operation soapAction="http://tempuri.org/RegistrarAnalisis" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAnalisis">
+      <soap:operation soapAction="http://tempuri.org/UpdateAnalisis" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAnalisis">
+      <soap:operation soapAction="http://tempuri.org/DeleteAnalisis" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCuentas">
+      <soap:operation soapAction="http://tempuri.org/GetCuentas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCuenta">
+      <soap:operation soapAction="http://tempuri.org/getCuenta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarCuenta">
+      <soap:operation soapAction="http://tempuri.org/RegistrarCuenta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCuenta">
+      <soap:operation soapAction="http://tempuri.org/UpdateCuenta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCuenta">
+      <soap:operation soapAction="http://tempuri.org/DeleteCuenta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPacientes">
+      <soap:operation soapAction="http://tempuri.org/GetPacientes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPaciente">
+      <soap:operation soapAction="http://tempuri.org/getPaciente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarPaciente">
+      <soap:operation soapAction="http://tempuri.org/RegistrarPaciente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePaciente">
+      <soap:operation soapAction="http://tempuri.org/UpdatePaciente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePaciente">
+      <soap:operation soapAction="http://tempuri.org/DeletePaciente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPagos">
+      <soap:operation soapAction="http://tempuri.org/GetPagos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPago">
+      <soap:operation soapAction="http://tempuri.org/getPago" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarPago">
+      <soap:operation soapAction="http://tempuri.org/RegistrarPago" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePago">
+      <soap:operation soapAction="http://tempuri.org/UpdatePago" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePago">
+      <soap:operation soapAction="http://tempuri.org/DeletePago" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProcedimientos">
+      <soap:operation soapAction="http://tempuri.org/GetProcedimientos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProcedimiento">
+      <soap:operation soapAction="http://tempuri.org/getProcedimiento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarProcedimiento">
+      <soap:operation soapAction="http://tempuri.org/RegistrarProcedimiento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProcedimiento">
+      <soap:operation soapAction="http://tempuri.org/UpdateProcedimiento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProcedimiento">
+      <soap:operation soapAction="http://tempuri.org/DeleteProcedimiento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsuarios">
+      <soap:operation soapAction="http://tempuri.org/GetUsuarios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUsuarios">
+      <soap:operation soapAction="http://tempuri.org/getUsuarios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarUsuarios">
+      <soap:operation soapAction="http://tempuri.org/RegistrarUsuarios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUsuarios">
+      <soap:operation soapAction="http://tempuri.org/UpdateUsuarios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUsuarios">
+      <soap:operation soapAction="http://tempuri.org/DeleteUsuarios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoles">
+      <soap:operation soapAction="http://tempuri.org/GetRoles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRoles">
+      <soap:operation soapAction="http://tempuri.org/getRoles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarRoles">
+      <soap:operation soapAction="http://tempuri.org/RegistrarRoles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRoles">
+      <soap:operation soapAction="http://tempuri.org/UpdateRoles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRoles">
+      <soap:operation soapAction="http://tempuri.org/DeleteRoles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CoreWebServiceSoap12" type="tns:CoreWebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnalisis">
+      <soap12:operation soapAction="http://tempuri.org/GetAnalisis" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAnalisis">
+      <soap12:operation soapAction="http://tempuri.org/getAnalisis" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarAnalisis">
+      <soap12:operation soapAction="http://tempuri.org/RegistrarAnalisis" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAnalisis">
+      <soap12:operation soapAction="http://tempuri.org/UpdateAnalisis" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAnalisis">
+      <soap12:operation soapAction="http://tempuri.org/DeleteAnalisis" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCuentas">
+      <soap12:operation soapAction="http://tempuri.org/GetCuentas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCuenta">
+      <soap12:operation soapAction="http://tempuri.org/getCuenta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarCuenta">
+      <soap12:operation soapAction="http://tempuri.org/RegistrarCuenta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCuenta">
+      <soap12:operation soapAction="http://tempuri.org/UpdateCuenta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCuenta">
+      <soap12:operation soapAction="http://tempuri.org/DeleteCuenta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPacientes">
+      <soap12:operation soapAction="http://tempuri.org/GetPacientes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPaciente">
+      <soap12:operation soapAction="http://tempuri.org/getPaciente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarPaciente">
+      <soap12:operation soapAction="http://tempuri.org/RegistrarPaciente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePaciente">
+      <soap12:operation soapAction="http://tempuri.org/UpdatePaciente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePaciente">
+      <soap12:operation soapAction="http://tempuri.org/DeletePaciente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPagos">
+      <soap12:operation soapAction="http://tempuri.org/GetPagos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPago">
+      <soap12:operation soapAction="http://tempuri.org/getPago" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarPago">
+      <soap12:operation soapAction="http://tempuri.org/RegistrarPago" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePago">
+      <soap12:operation soapAction="http://tempuri.org/UpdatePago" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePago">
+      <soap12:operation soapAction="http://tempuri.org/DeletePago" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProcedimientos">
+      <soap12:operation soapAction="http://tempuri.org/GetProcedimientos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProcedimiento">
+      <soap12:operation soapAction="http://tempuri.org/getProcedimiento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarProcedimiento">
+      <soap12:operation soapAction="http://tempuri.org/RegistrarProcedimiento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProcedimiento">
+      <soap12:operation soapAction="http://tempuri.org/UpdateProcedimiento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProcedimiento">
+      <soap12:operation soapAction="http://tempuri.org/DeleteProcedimiento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsuarios">
+      <soap12:operation soapAction="http://tempuri.org/GetUsuarios" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUsuarios">
+      <soap12:operation soapAction="http://tempuri.org/getUsuarios" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarUsuarios">
+      <soap12:operation soapAction="http://tempuri.org/RegistrarUsuarios" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUsuarios">
+      <soap12:operation soapAction="http://tempuri.org/UpdateUsuarios" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUsuarios">
+      <soap12:operation soapAction="http://tempuri.org/DeleteUsuarios" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoles">
+      <soap12:operation soapAction="http://tempuri.org/GetRoles" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRoles">
+      <soap12:operation soapAction="http://tempuri.org/getRoles" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarRoles">
+      <soap12:operation soapAction="http://tempuri.org/RegistrarRoles" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRoles">
+      <soap12:operation soapAction="http://tempuri.org/UpdateRoles" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRoles">
+      <soap12:operation soapAction="http://tempuri.org/DeleteRoles" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CoreWebService">
+    <wsdl:port name="CoreWebServiceSoap" binding="tns:CoreWebServiceSoap">
+      <soap:address location="https://localhost:44313/CoreWebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CoreWebServiceSoap12" binding="tns:CoreWebServiceSoap12">
+      <soap12:address location="https://localhost:44313/CoreWebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

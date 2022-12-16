@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HospitalServiceDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Analisis">
+    <Key>
+      <PropertyRef Name="IdAnalisis" />
+    </Key>
+    <Property Name="IdAnalisis" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NumHistMedico" Type="int" Nullable="false" />
+    <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+    <Property Name="Monto" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="IdTipoAnalisis" Type="int" Nullable="false" />
+    <Property Name="Pago" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cuenta">
+    <Key>
+      <PropertyRef Name="IdCuenta" />
+    </Key>
+    <Property Name="IdCuenta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdPaciente" Type="int" Nullable="false" />
+    <Property Name="NumHistMedico" Type="int" Nullable="false" />
+    <Property Name="Balance" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Paciente">
+    <Key>
+      <PropertyRef Name="IdPaciente" />
+    </Key>
+    <Property Name="IdPaciente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NumHistMedico" Type="int" Nullable="false" />
+    <Property Name="IdUsuario" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pago">
+    <Key>
+      <PropertyRef Name="IdPago" />
+    </Key>
+    <Property Name="IdPago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NumHistMedico" Type="int" Nullable="false" />
+    <Property Name="Monto" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+    <Property Name="IsWeb" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Procedimiento">
+    <Key>
+      <PropertyRef Name="IdProcedimiento" />
+    </Key>
+    <Property Name="IdProcedimiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NumHistMedico" Type="int" Nullable="false" />
+    <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+    <Property Name="Monto" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="TipoProcedimiento" Type="int" Nullable="false" />
+    <Property Name="Pago" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NombreRol" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TipoAnalisis">
+    <Key>
+      <PropertyRef Name="IdTipoAnalisis" />
+    </Key>
+    <Property Name="IdTipoAnalisis" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TipoAnalisis" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TipoProcedimiento">
+    <Key>
+      <PropertyRef Name="IdTipoProcedimiento" />
+    </Key>
+    <Property Name="IdTipoProcedimiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TipoProcedimiento" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Cedula" Type="nvarchar" MaxLength="11" Nullable="false" />
+    <Property Name="Nombres" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Apellidos" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Sexo" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="Telefono" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Correo" Type="nvarchar" MaxLength="320" Nullable="false" />
+    <Property Name="Direccion" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="IDRol" Type="int" Nullable="false" />
+    <Property Name="Estado" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Analisis__IdTipo__1AD3FDA4">
+    <End Role="TipoAnalisis" Type="Self.TipoAnalisis" Multiplicity="1" />
+    <End Role="Analisis" Type="Self.Analisis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoAnalisis">
+        <PropertyRef Name="IdTipoAnalisis" />
+      </Principal>
+      <Dependent Role="Analisis">
+        <PropertyRef Name="IdTipoAnalisis" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+warning 6035: The relationship 'FK__Analisis__NumHis__19DFD96B' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__Analisis__NumHis__19DFD96B" />-->
+  <Association Name="FK__Cuenta__IdPacien__1DB06A4F">
+    <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+    <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="IdPaciente" />
+      </Principal>
+      <Dependent Role="Cuenta">
+        <PropertyRef Name="IdPaciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+warning 6035: The relationship 'FK__Cuenta__NumHistM__1EA48E88' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__Cuenta__NumHistM__1EA48E88" />-->
+  <Association Name="FK__Paciente__IdUsua__18EBB532">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Paciente" Type="Self.Paciente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Paciente">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+warning 6035: The relationship 'FK__Pago__NumHistMed__1F98B2C1' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__Pago__NumHistMed__1F98B2C1" />-->
+  <!--Errors Found During Generation:
+warning 6035: The relationship 'FK__Procedimi__NumHi__1BC821DD' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__Procedimi__NumHi__1BC821DD" />-->
+  <Association Name="FK__Procedimi__TipoP__1CBC4616">
+    <End Role="TipoProcedimiento" Type="Self.TipoProcedimiento" Multiplicity="1" />
+    <End Role="Procedimiento" Type="Self.Procedimiento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoProcedimiento">
+        <PropertyRef Name="IdTipoProcedimiento" />
+      </Principal>
+      <Dependent Role="Procedimiento">
+        <PropertyRef Name="TipoProcedimiento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuarios_Rol">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Usuarios">
+        <PropertyRef Name="IDRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="Comp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="username" Type="nvarchar" Mode="In" />
+    <Parameter Name="correo" Type="nvarchar" Mode="In" />
+    <Parameter Name="Hashedpw" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="GetReg" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="username" Type="nvarchar" Mode="In" />
+    <Parameter Name="correo" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="InsertUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Username" Type="nvarchar" Mode="In" />
+    <Parameter Name="Password" Type="nvarchar" Mode="In" />
+    <Parameter Name="Cedula" Type="nvarchar" Mode="In" />
+    <Parameter Name="Nombres" Type="nvarchar" Mode="In" />
+    <Parameter Name="Apellidos" Type="nvarchar" Mode="In" />
+    <Parameter Name="Sexo" Type="nvarchar" Mode="In" />
+    <Parameter Name="Telefono" Type="nvarchar" Mode="In" />
+    <Parameter Name="Correo" Type="nvarchar" Mode="In" />
+    <Parameter Name="Direccion" Type="nvarchar" Mode="In" />
+    <Parameter Name="IDRol" Type="int" Mode="In" />
+    <Parameter Name="Estado" Type="bit" Mode="In" />
+  </Function>
+  <EntityContainer Name="HospitalServiceDBModelStoreContainer">
+    <EntitySet Name="Analisis" EntityType="Self.Analisis" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cuenta" EntityType="Self.Cuenta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Paciente" EntityType="Self.Paciente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pago" EntityType="Self.Pago" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Procedimiento" EntityType="Self.Procedimiento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TipoAnalisis" EntityType="Self.TipoAnalisis" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TipoProcedimiento" EntityType="Self.TipoProcedimiento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Analisis__IdTipo__1AD3FDA4" Association="Self.FK__Analisis__IdTipo__1AD3FDA4">
+      <End Role="TipoAnalisis" EntitySet="TipoAnalisis" />
+      <End Role="Analisis" EntitySet="Analisis" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cuenta__IdPacien__1DB06A4F" Association="Self.FK__Cuenta__IdPacien__1DB06A4F">
+      <End Role="Paciente" EntitySet="Paciente" />
+      <End Role="Cuenta" EntitySet="Cuenta" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Paciente__IdUsua__18EBB532" Association="Self.FK__Paciente__IdUsua__18EBB532">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Paciente" EntitySet="Paciente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Procedimi__TipoP__1CBC4616" Association="Self.FK__Procedimi__TipoP__1CBC4616">
+      <End Role="TipoProcedimiento" EntitySet="TipoProcedimiento" />
+      <End Role="Procedimiento" EntitySet="Procedimiento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuarios_Rol" Association="Self.FK_Usuarios_Rol">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Usuarios" EntitySet="Usuarios" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

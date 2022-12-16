@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HospitalServiceDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Analisis">
+    <Key>
+      <PropertyRef Name="IdAnalisis" />
+    </Key>
+    <Property Name="IdAnalisis" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NumHistMedico" Type="Int32" Nullable="false" />
+    <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Monto" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="IdTipoAnalisis" Type="Int32" Nullable="false" />
+    <Property Name="Pago" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="TipoAnalisis" Relationship="Self.FK__Analisis__IdTipo__1AD3FDA4" FromRole="Analisis" ToRole="TipoAnalisis" />
+  </EntityType>
+  <EntityType Name="Cuenta">
+    <Key>
+      <PropertyRef Name="IdCuenta" />
+    </Key>
+    <Property Name="IdCuenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdPaciente" Type="Int32" Nullable="false" />
+    <Property Name="NumHistMedico" Type="Int32" Nullable="false" />
+    <Property Name="Balance" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Paciente" Relationship="Self.FK__Cuenta__IdPacien__1DB06A4F" FromRole="Cuenta" ToRole="Paciente" />
+  </EntityType>
+  <EntityType Name="Paciente">
+    <Key>
+      <PropertyRef Name="IdPaciente" />
+    </Key>
+    <Property Name="IdPaciente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NumHistMedico" Type="Int32" Nullable="false" />
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cuenta" Relationship="Self.FK__Cuenta__IdPacien__1DB06A4F" FromRole="Paciente" ToRole="Cuenta" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.FK__Paciente__IdUsua__18EBB532" FromRole="Paciente" ToRole="Usuarios" />
+  </EntityType>
+  <EntityType Name="Pago">
+    <Key>
+      <PropertyRef Name="IdPago" />
+    </Key>
+    <Property Name="IdPago" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NumHistMedico" Type="Int32" Nullable="false" />
+    <Property Name="Monto" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IsWeb" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Procedimiento">
+    <Key>
+      <PropertyRef Name="IdProcedimiento" />
+    </Key>
+    <Property Name="IdProcedimiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NumHistMedico" Type="Int32" Nullable="false" />
+    <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Monto" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="TipoProcedimiento" Type="Int32" Nullable="false" />
+    <Property Name="Pago" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="TipoProcedimiento1" Relationship="Self.FK__Procedimi__TipoP__1CBC4616" FromRole="Procedimiento" ToRole="TipoProcedimiento" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreRol" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.FK_Usuarios_Rol" FromRole="Roles" ToRole="Usuarios" />
+  </EntityType>
+  <EntityType Name="TipoAnalisis">
+    <Key>
+      <PropertyRef Name="IdTipoAnalisis" />
+    </Key>
+    <Property Name="IdTipoAnalisis" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TipoAnalisis1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Analisis" Relationship="Self.FK__Analisis__IdTipo__1AD3FDA4" FromRole="TipoAnalisis" ToRole="Analisis" />
+  </EntityType>
+  <EntityType Name="TipoProcedimiento">
+    <Key>
+      <PropertyRef Name="IdTipoProcedimiento" />
+    </Key>
+    <Property Name="IdTipoProcedimiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TipoProcedimiento1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Procedimiento" Relationship="Self.FK__Procedimi__TipoP__1CBC4616" FromRole="TipoProcedimiento" ToRole="Procedimiento" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Cedula" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Nombres" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Apellidos" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Sexo" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Correo" Type="String" MaxLength="320" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Direccion" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IDRol" Type="Int32" Nullable="false" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Paciente" Relationship="Self.FK__Paciente__IdUsua__18EBB532" FromRole="Usuarios" ToRole="Paciente" />
+    <NavigationProperty Name="Roles" Relationship="Self.FK_Usuarios_Rol" FromRole="Usuarios" ToRole="Roles" />
+  </EntityType>
+  <Association Name="FK__Analisis__IdTipo__1AD3FDA4">
+    <End Role="TipoAnalisis" Type="Self.TipoAnalisis" Multiplicity="1" />
+    <End Role="Analisis" Type="Self.Analisis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoAnalisis">
+        <PropertyRef Name="IdTipoAnalisis" />
+      </Principal>
+      <Dependent Role="Analisis">
+        <PropertyRef Name="IdTipoAnalisis" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cuenta__IdPacien__1DB06A4F">
+    <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+    <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="IdPaciente" />
+      </Principal>
+      <Dependent Role="Cuenta">
+        <PropertyRef Name="IdPaciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Paciente__IdUsua__18EBB532">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Paciente" Type="Self.Paciente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Paciente">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Procedimi__TipoP__1CBC4616">
+    <End Role="TipoProcedimiento" Type="Self.TipoProcedimiento" Multiplicity="1" />
+    <End Role="Procedimiento" Type="Self.Procedimiento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoProcedimiento">
+        <PropertyRef Name="IdTipoProcedimiento" />
+      </Principal>
+      <Dependent Role="Procedimiento">
+        <PropertyRef Name="TipoProcedimiento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuarios_Rol">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Usuarios">
+        <PropertyRef Name="IDRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HospitalServiceDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Analisis" EntityType="Self.Analisis" />
+    <EntitySet Name="Cuenta" EntityType="Self.Cuenta" />
+    <EntitySet Name="Paciente" EntityType="Self.Paciente" />
+    <EntitySet Name="Pago" EntityType="Self.Pago" />
+    <EntitySet Name="Procedimiento" EntityType="Self.Procedimiento" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" />
+    <EntitySet Name="TipoAnalisis" EntityType="Self.TipoAnalisis" />
+    <EntitySet Name="TipoProcedimiento" EntityType="Self.TipoProcedimiento" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+    <AssociationSet Name="FK__Analisis__IdTipo__1AD3FDA4" Association="Self.FK__Analisis__IdTipo__1AD3FDA4">
+      <End Role="TipoAnalisis" EntitySet="TipoAnalisis" />
+      <End Role="Analisis" EntitySet="Analisis" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cuenta__IdPacien__1DB06A4F" Association="Self.FK__Cuenta__IdPacien__1DB06A4F">
+      <End Role="Paciente" EntitySet="Paciente" />
+      <End Role="Cuenta" EntitySet="Cuenta" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Paciente__IdUsua__18EBB532" Association="Self.FK__Paciente__IdUsua__18EBB532">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Paciente" EntitySet="Paciente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Procedimi__TipoP__1CBC4616" Association="Self.FK__Procedimi__TipoP__1CBC4616">
+      <End Role="TipoProcedimiento" EntitySet="TipoProcedimiento" />
+      <End Role="Procedimiento" EntitySet="Procedimiento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuarios_Rol" Association="Self.FK_Usuarios_Rol">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Usuarios" EntitySet="Usuarios" />
+    </AssociationSet>
+    <FunctionImport Name="Comp" ReturnType="Collection(String)">
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="correo" Mode="In" Type="String" />
+      <Parameter Name="Hashedpw" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetReg" ReturnType="Collection(String)">
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="correo" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="InsertUser" ReturnType="Collection(HospitalServiceDBModel.InsertUser_Result)">
+      <Parameter Name="Username" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+      <Parameter Name="Cedula" Mode="In" Type="String" />
+      <Parameter Name="Nombres" Mode="In" Type="String" />
+      <Parameter Name="Apellidos" Mode="In" Type="String" />
+      <Parameter Name="Sexo" Mode="In" Type="String" />
+      <Parameter Name="Telefono" Mode="In" Type="String" />
+      <Parameter Name="Correo" Mode="In" Type="String" />
+      <Parameter Name="Direccion" Mode="In" Type="String" />
+      <Parameter Name="IDRol" Mode="In" Type="Int32" />
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="InsertUser_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Username" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Password" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="Cedula" Nullable="false" MaxLength="11" />
+    <Property Type="String" Name="Nombres" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Apellidos" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Sexo" Nullable="false" MaxLength="2" />
+    <Property Type="String" Name="Telefono" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="Correo" Nullable="false" MaxLength="320" />
+    <Property Type="String" Name="Direccion" Nullable="false" MaxLength="300" />
+    <Property Type="Int32" Name="IDRol" Nullable="false" />
+    <Property Type="Boolean" Name="Estado" Nullable="false" />
+  </ComplexType>
+</Schema>
